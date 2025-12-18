@@ -1,0 +1,135 @@
+      <!DOCTYPE html>
+  <html lang="ar" dir="rtl">
+      <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/CSS/project.css">
+        <title>تواصل معنا</title>
+      </head>
+      <body style="direction: rtl;">
+  <header>
+    <div class="container nav">
+      <div class="logo">
+        <div class="logo-mark">
+          <span>B</span>
+        </div>
+        <div class="logo-text">
+          <strong>Legend Burger</strong>
+        </div>
+      </div>
+
+      <!-- Checkbox مسؤول عن فتح/غلق المنيو في الموبايل -->
+      <input type="checkbox" id="navToggle" hidden />
+
+<nav class="nav-links">
+  <a href="index.html">الصفحة الرئيسية</a>
+  <a href="index.html#about">عن المطعم</a>
+  <a href="menu.html">المنيو</a>
+  <a href="orders.html">الطلبات</a>
+  <a href="account.html">تفاصيل الحساب</a>
+  <a href="contact.html">تواصل معنا</a>
+  
+  
+
+</nav>
+
+
+      <div class="nav-actions">
+        <a href="login.html" class="btn btn-primary">
+          تسجيل الدخول
+        </a>
+        <a href="register.html" class="btn btn-outline">
+          إنشاء حساب
+        </a>
+        <!-- زر الهامبورجر للموبايل -->
+        <label class="nav-toggle" for="navToggle" aria-label="Toggle navigation">
+          <span></span>
+        </label>
+      </div>
+    </div>
+  </header>
+
+            <section id="contact.html">
+              <style>
+                /* Apply same background as account page */
+                body.contact-bg {
+                  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/PHOTOS/photo 1.jpg');
+                  background-size: cover;
+                  background-attachment: fixed;
+                  background-position: center 20%;
+                  min-height: 100vh;
+                  color: #f0f0f0;
+                }
+                /* ensure content contrasts on background */
+                .contact-form, .card { background: rgba(36,36,36,0.85); }
+
+                /* Increase input/select height and improve spacing */
+                .contact-form .field { margin-bottom: 16px; }
+                .contact-form input[type="text"],
+                .contact-form input[type="email"],
+                .contact-form select {
+                  height: 48px;
+                  padding: 10px 12px;
+                  font-size: 16px;
+                  border-radius: 6px;
+                  border: 1px solid rgba(255,255,255,0.08);
+                  background: #2f2f2f; /* subtle dark gray */
+                  color: #f0f0f0;
+                  width: 100%;
+                  box-sizing: border-box;
+                }
+                .contact-form textarea {
+                  min-height: 140px;
+                  padding: 12px;
+                  font-size: 16px;
+                  border-radius: 6px;
+                  border: 1px solid rgba(255,255,255,0.08);
+                  background: #2f2f2f; /* subtle dark gray */
+                  color: #f0f0f0;
+                  width: 100%;
+                  box-sizing: border-box;
+                }
+                .contact-form input::placeholder,
+                .contact-form textarea::placeholder {
+                  color: rgba(240,240,240,0.6);
+                }
+                /* Make labels clearer on dark background */
+                .contact-form label { color: #f0f0f0; display: block; margin-bottom: 6px; }
+              </style>
+              <script>
+                document.documentElement.lang = 'ar';
+                document.body.classList.add('contact-bg');
+              </script>
+            <div class="container split">
+                <article class="card">
+                    <h3>تواصل معنا</h3>
+                    <form class="contact-form">
+                        <div class="field">
+                            <label>الاسم الكامل</label>
+                            <input type="text" placeholder="اكتب اسمك هنا" required>
+                        </div>
+                        <div class="field">
+                            <label>البريد الإلكتروني</label>
+                            <input type="email" placeholder="example@gmail.com" required>
+                        </div>
+                        <div class="field">
+                            <label>نوع الاستفسار</label>
+                            <select>
+            <option>استفسار عام</option>
+            <option>مشكلة في الطلب</option>
+            <option>اقتراح</option>
+            <option>حجز طاولة</option>
+          </select>
+                        </div>
+                        <div class="field">
+                            <label>الرسالة</label>
+                            <textarea rows="4" placeholder="اكتب رسالتك هنا..." required></textarea>
+                        </div>
+                        <button class="btn btn-primary" style="margin-top: 12px;">إرسال الرسالة</button>
+                    </form>
+                </article>
+            </div>
+        </section>
+      </body>
+      </html>
+  

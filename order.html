@@ -1,0 +1,433 @@
+<!-- made by Ahmed Eid (order) -->
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>الطلبات - Legend Burger</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/CSS/project.css">
+  <style>
+    /* Page-local improvements for orders layout */
+    .orders-section { padding: 24px 0; }
+    .orders-filters { margin-bottom: 10px; }
+    .filter-tabs { display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
+
+    /* Filter tab pills */
+    .filter-tab {
+      appearance: none;
+      -webkit-appearance: none;
+      border: 1px solid rgba(255,255,255,0.06);
+      background: transparent;
+      color: var(--text-soft);
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      cursor: pointer;
+      transition: transform .12s ease, box-shadow .12s ease, color .12s ease, background .12s ease, border-color .12s ease;
+    }
+    .filter-tab:hover { border-color: rgba(255,255,255,0.14); color: var(--text); transform: translateY(-2px); }
+    .filter-tab:focus { outline: none; box-shadow: 0 6px 18px rgba(0,0,0,0.6); }
+    .filter-tab.active {
+      background: linear-gradient(90deg, var(--accent), var(--accent-soft));
+      color: #fff;
+      border-color: transparent;
+      box-shadow: 0 10px 30px rgba(255,75,43,0.16);
+      transform: translateY(-2px) scale(1.01);
+    }
+    /* small responsive tweak */
+    @media (max-width:520px){ .filter-tab{padding:7px 10px; font-size:12px} }
+
+    .orders-container { display: grid; gap:14px; margin-top: 12px; }
+
+    .order-card {
+      background: var(--card);
+      border-radius: 12px;
+      padding: 12px 14px;
+      border: 1px solid var(--border-soft);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.55);
+      transition: transform .12s ease, box-shadow .12s ease;
+    }
+    .order-card:hover { transform: translateY(-4px); box-shadow: 0 18px 40px rgba(0,0,0,0.6); }
+
+    .order-header { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:8px; }
+    .order-info h3 { margin:0; font-size:16px; }
+    .order-date { display:block; font-size:12px; color:var(--text-soft); }
+
+    .order-status { padding:6px 10px; border-radius:999px; font-size:13px; display:inline-flex; align-items:center; gap:8px; }
+    .order-status .status-dot { width:10px; height:10px; border-radius:50%; display:inline-block; }
+    .order-status.pending { color: #ffb16a; background: rgba(255,177,106,0.06); }
+    .order-status.preparing { color:#ffd28a; background: rgba(255,210,138,0.04); }
+    .order-status.delivering { color:#7fd3ff; background: rgba(127,211,255,0.04); }
+    .order-status.completed { color:#8df2a1; background: rgba(141,242,161,0.04); }
+    .order-status.cancelled { color:#ff9b9b; background: rgba(255,155,155,0.04); }
+
+    .order-items { display:flex; flex-direction:column; gap:8px; padding:6px 0; margin-top:6px; }
+    .order-item { display:flex; justify-content:space-between; align-items:center; gap:12px; padding:6px 0; border-radius:8px; }
+    .order-item .item-info { display:flex; gap:10px; align-items:center; }
+    .item-name { font-weight:600; font-size:14px; }
+    .item-quantity { color:var(--text-soft); font-size:13px; }
+    .item-price { font-weight:700; color:var(--text); }
+
+    .order-footer { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-top:10px; }
+    .order-total strong { color: var(--accent); font-size:15px; }
+
+    .order-progress .progress-steps { display:flex; gap:8px; align-items:center; }
+    .order-progress .step { padding:6px 8px; border-radius:8px; font-size:12px; color:var(--text-soft); background: rgba(255,255,255,0.02); }
+    .order-progress .step.completed { background: rgba(255,255,255,0.03); color:var(--text); }
+    .order-progress .step.active { background: linear-gradient(90deg,var(--accent),var(--accent-soft)); color:#000; }
+
+    /* make actions smaller and aligned */
+    .order-actions { display:flex; gap:8px; }
+    .order-actions .btn { padding:7px 10px; }
+
+    @media (min-width:900px) {
+      .orders-container { grid-template-columns: repeat(2, minmax(0,1fr)); }
+    }
+    @media (max-width:899px) {
+      .orders-container { grid-template-columns: 1fr; }
+    }
+  </style>
+  <script>
+    // Filter tabs: toggle active class and show/hide orders
+    document.addEventListener('DOMContentLoaded', function(){
+      const tabs = document.querySelectorAll('.filter-tab');
+      const cards = document.querySelectorAll('.order-card');
+      function applyFilter(filter){
+        cards.forEach(c=>{
+          if(filter==='all' || c.dataset.status===filter) c.style.display = '';
+          else c.style.display = 'none';
+        });
+      }
+      tabs.forEach(tab=>{
+        tab.addEventListener('click', ()=>{
+          tabs.forEach(t=>t.classList.remove('active'));
+          tab.classList.add('active');
+          applyFilter(tab.dataset.filter);
+        });
+      });
+      // set initial state
+      const active = document.querySelector('.filter-tab.active');
+      if(active) applyFilter(active.dataset.filter);
+    });
+  </script>
+</head>
+
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container nav">
+      <div class="logo">
+        <div class="logo-mark">
+          <span>B</span>
+        </div>
+        <div class="logo-text">
+          <strong>Legend Burger</strong>
+        </div>
+      </div>
+
+      <!-- Checkbox مسؤول عن فتح/غلق المنيو في الموبايل -->
+      <input type="checkbox" id="navToggle" hidden />
+
+<nav class="nav-links">
+  <a href="index.html">الصفحة الرئيسية</a>
+  <a href="index.html#about">عن المطعم</a>
+  <a href="menu.html">المنيو</a>
+  <a href="order.html">الطلبات</a>
+  <a href="account.html">تفاصيل الحساب</a>
+  <a href="contact.html">تواصل معنا</a>
+  
+  
+
+</nav>
+
+
+      <div class="nav-actions">
+        <a href="login.html" class="btn btn-primary">
+          تسجيل الدخول
+        </a>
+        <a href="register.html" class="btn btn-outline">
+          إنشاء حساب
+        </a>
+        <!-- زر الهامبورجر للموبايل -->
+        <label class="nav-toggle" for="navToggle" aria-label="Toggle navigation">
+          <span></span>
+        </label>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- صفحة الطلبات -->
+    <section id="orders" class="orders-section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-title">طلباتك | your orders</div>
+            <div class="section-subtitle">
+              تتبع طلباتك السابقة والحالية وإدارة طلباتك بسهولة
+            </div>
+          </div>
+        </div>
+
+        <div class="orders-filters">
+          <div class="filter-tabs">
+            <button class="filter-tab active" data-filter="all">جميع الطلبات</button>
+            <button class="filter-tab" data-filter="pending">قيد الانتظار</button>
+            <button class="filter-tab" data-filter="preparing">قيد التحضير</button>
+            <button class="filter-tab" data-filter="delivering">قيد التوصيل</button>
+            <button class="filter-tab" data-filter="completed">مكتملة</button>
+            <button class="filter-tab" data-filter="cancelled">ملغية</button>
+          </div>
+        </div>
+        <!-- الطلبات -->
+        <div class="orders-container">
+          <!-- طلب قيد الانتظار -->
+          <div class="order-card" data-status="pending">
+            <div class="order-header">
+              <div class="order-info">
+                <h3>طلب #LB1257</h3>
+                <span class="order-date">15 مارس 2025 - 02:30 م</span>
+              </div>
+              <div class="order-status pending">
+                <span class="status-dot"></span>
+                قيد الانتظار
+              </div>
+            </div>
+
+            <div class="order-items">
+              <div class="order-item">
+                <div class="item-info">
+                  <span class="item-name">Legend Classic</span>
+                  <span class="item-quantity">×2</span>
+                </div>
+                <span class="item-price">230 ج.م</span>
+              </div>
+              <div class="order-item">
+                <div class="item-info">
+                  <span class="item-name">Truffle Fries</span>
+                  <span class="item-quantity">×1</span>
+                </div>
+                <span class="item-price">80 ج.م</span>
+              </div>
+              <div class="order-item">
+                <div class="item-info">
+                  <span class="item-name">Legend Cola</span>
+                  <span class="item-quantity">×2</span>
+                </div>
+                <span class="item-price">70 ج.م</span>
+              </div>
+            </div>
+
+            <div class="order-footer">
+              <div class="order-total">
+                <strong>المجموع: 380 ج.م</strong>
+              </div>
+              <div class="order-actions">
+                <button class="btn btn-outline btn-sm">تعديل الطلب</button>
+                <button class="btn btn-danger btn-sm">إلغاء الطلب</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- طلب قيد التحضير -->
+          <div class="order-card" data-status="preparing">
+            <div class="order-header">
+              <div class="order-info">
+                <h3>طلب #LB1257</h3>
+                <span class="order-date">15 مارس 2025 - 01:45 م</span>
+              </div>
+              <div class="order-status preparing">
+                <span class="status-dot"></span>
+                قيد التحضير
+              </div>
+            </div>
+
+            <div class="order-items">
+              <div class="order-item">
+                <div class="item-info">
+                  <span class="item-name">Spicy Volcano</span>
+                  <span class="item-quantity">×1</span>
+                </div>
+                <span class="item-price">135 ج.م</span>
+              </div>
+              <div class="order-item">
+                <div class="item-info">
+                  <span class="item-name">Legend Loaded Fries</span>
+                  <span class="item-quantity">×1</span>
+                </div>
+                <span class="item-price">95 ج.م</span>
+              </div>
+            </div>
+
+            <div class="order-progress">
+              <div class="progress-steps">
+                <div class="step completed">
+                  <span class="step-icon">✓</span>
+                  <span class="step-label">تم الاستلام</span>
+                </div>
+                <div class="step active">
+                  <span class="step-icon">👨‍🍳</span>
+                  <span class="step-label">قيد التحضير</span>
+                </div>
+                <div class="step">
+                  <span class="step-icon">🚗</span>
+                  <span class="step-label">قيد التوصيل</span>
+                </div>
+                <div class="step">
+                  <span class="step-icon">🎉</span>
+                  <span class="step-label">مكتمل</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="order-footer">
+              <div class="order-total">
+                <strong>المجموع: 230 ج.م</strong>
+              </div>
+              <div class="estimated-time">
+                ⏱ الوقت المتوقع: 15-20 دقيقة
+              </div>
+            </div>
+          </div>
+
+          <!-- طلب قيد التوصيل -->
+          <div class="order-card" data-status="delivering">
+            <div class="order-header">
+              <div class="order-info">
+                <h3>طلب #LB1256</h3>
+                <span class="order-date">15 مارس 2025 - 12:30 م</span>
+              </div>
+              <div class="order-status delivering">
+                <span class="status-dot"></span>
+                قيد التوصيل
+              </div>
+            </div>
+
+            <div class="order-items">
+              <div class="order-item">
+                <div class="item-info">
+                  <span class="item-name">Legend Duo Combo</span>
+                  <span class="item-quantity">×1</span>
+                </div>
+                <span class="item-price">260 ج.م</span>
+              </div>
+            </div>
+
+            <div class="delivery-info">
+              <div class="delivery-person">
+                <strong>المُوصِل:</strong> أحمد محمد
+              </div>
+              <div class="delivery-contact">
+                <strong>رقم الهاتف:</strong> 01234567890
+              </div>
+              <div class="delivery-estimate">
+                <strong>الوقت المتوقع للوصول:</strong> 5 دقائق
+              </div>
+            </div>
+
+            <div class="order-footer">
+              <div class="order-total">
+                <strong>المجموع: 260 ج.م</strong>
+              </div>
+              <button class="btn btn-primary btn-sm">تتبع الطلب</button>
+            </div>
+          </div>
+
+          <!-- طلب مكتمل -->
+          <div class="order-card" data-status="completed">
+            <div class="order-header">
+              <div class="order-info">
+                <h3>طلب #LB1255</h3>
+                <span class="order-date">14 مارس 2025 - 08:15 م</span>
+              </div>
+              <div class="order-status completed">
+                <span class="status-dot"></span>
+                مكتمل
+              </div>
+            </div>
+
+            <div class="order-items">
+              <div class="order-item">
+                <div class="item-info">
+                  <span class="item-name">Cheese Lovers</span>
+                  <span class="item-quantity">×1</span>
+                </div>
+                <span class="item-price">145 ج.م</span>
+              </div>
+              <div class="order-item">
+                <div class="item-info">
+                  <span class="item-name">Salted Caramel Shake</span>
+                  <span class="item-quantity">×1</span>
+                </div>
+                <span class="item-price">70 ج.م</span>
+              </div>
+            </div>
+
+            <div class="order-footer">
+              <div class="order-total">
+                <strong>المجموع: 215 ج.م</strong>
+              </div>
+              <div class="order-actions">
+                <button class="btn btn-outline btn-sm">إعادة الطلب</button>
+                <button class="btn btn-primary btn-sm">تقييم الطلب</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- طلب ملغي -->
+          <div class="order-card" data-status="cancelled">
+            <div class="order-header">
+              <div class="order-info">
+                <h3>طلب #LB1254</h3>
+                <span class="order-date">14 مارس 2025 - 06:20 م</span>
+              </div>
+              <div class="order-status cancelled">
+                <span class="status-dot"></span>
+                ملغي
+              </div>
+            </div>
+
+            <div class="order-items">
+              <div class="order-item">
+                <div class="item-info">
+                  <span class="item-name">Family Feast Box</span>
+                  <span class="item-quantity">×1</span>
+                </div>
+                <span class="item-price">520 ج.م</span>
+              </div>
+            </div>
+
+            <div class="cancellation-reason">
+              <strong>سبب الإلغاء:</strong> تغيير في الخطط
+            </div>
+
+            <div class="order-footer">
+              <div class="order-total">
+                <strong>المجموع: 520 ج.م</strong>
+              </div>
+              <button class="btn btn-outline btn-sm">إعادة الطلب</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- حالة عدم وجود طلبات -->
+        <div class="empty-state" id="emptyState" style="display: none;">
+          <div class="empty-icon">🍔</div>
+          <h3>لا توجد طلبات</h3>
+          <p>لم تقم بأي طلبات حتى الآن. ابدأ بتصفح قائمتنا اللذيذة!</p>
+          <a href="menu.html" class="btn btn-primary">تصفّح المنيو</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-row">
+      <div>© 2025 Legend Burger. جميع الحقوق محفوظة.</div>
+      <div>الموقع: القاهره .</div>
+    </div>
+  </footer>
+</body>
+
+</html>

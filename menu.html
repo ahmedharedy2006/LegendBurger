@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/CSS/project.css">
+  <title>Menu</title>
+</head>
+<body>
+    <!-- Header -->
+  <header>
+    <div class="container nav">
+      <div class="logo">
+        <div class="logo-mark">
+          <span>B</span>
+        </div>
+        <div class="logo-text">
+          <strong>Legend Burger</strong>
+        </div>
+      </div>
+
+      <!-- Checkbox مسؤول عن فتح/غلق المنيو في الموبايل -->
+      <input type="checkbox" id="navToggle" hidden />
+
+<nav class="nav-links">
+  <a href="index.html">الصفحة الرئيسية</a>
+  <a href="index.html#about">عن المطعم</a>
+  <a href="menu.html">المنيو</a>
+  <a href="order.html">الطلبات</a>
+  <a href="account.html">تفاصيل الحساب</a>
+  <a href="contact.html">تواصل معنا</a>
+  
+  
+
+</nav>
+
+
+      <div class="nav-actions">
+        <a href="login.html" class="btn btn-primary">
+          تسجيل الدخول
+        </a>
+        <a href="register.html" class="btn btn-outline">
+          إنشاء حساب
+        </a>
+        <!-- زر الهامبورجر للموبايل -->
+        <label class="nav-toggle" for="navToggle" aria-label="Toggle navigation">
+          <span></span>
+        </label>
+      </div>
+    </div>
+  </header>
+
+  <section id="menu">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-title">منيو Legend</div>
+            <div class="section-subtitle">
+              اختر البرجر اللي يناسب مزاجك، واذكر اسمه في ملاحظات الطلب.
+            </div>
+          </div>
+        </div>
+
+        <div class="category-filters">
+          <!-- راديو لكل كاتيجوري -->
+          <input type="radio" name="category" id="cat-all" checked>
+          <input type="radio" name="category" id="cat-burgers">
+          <input type="radio" name="category" id="cat-fries">
+          <input type="radio" name="category" id="cat-drinks">
+          <input type="radio" name="category" id="cat-deals">
+
+          <div class="category-pills">
+            <label class="pill" for="cat-all">الكل</label>
+            <label class="pill" for="cat-burgers">برجر مميز</label>
+            <label class="pill" for="cat-fries">سناكس & فرايز</label>
+            <label class="pill" for="cat-drinks">مشروبات</label>
+            <label class="pill" for="cat-deals">عروض كومبو</label>
+          </div>
+
+          <div class="menu-grid">
+            <!-- Cards -->
+            <article class="menu-card" data-category="burgers">
+              <span class="menu-tag">الأكثر مبيعاً ⭐</span>
+              <div class="menu-img">
+                <img src="/PHOTOS/Classic burger.avif" alt="Classic burger" />
+              </div>
+              <div class="menu-body">
+                <h3 class="menu-title">Legend Classic</h3>
+                <p class="menu-desc">
+                  برجر لحم بقري 150 جم، جبنة تشيدر، خس، طماطم، بصل، وصوص ليجند الخاص.
+                </p>
+                <div class="menu-footer">
+                  <div class="price">
+                    <strong>115 ج.م</strong>
+                    <small>يشمل كاتشب وبيكلز</small>
+                  </div>
+                  <a href="product.html" class="btn btn-primary btn-sm">
+                    اطلب هذا البرجر
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <article class="menu-card" data-category="burgers">
+              <span class="menu-tag">حار 🔥</span>
+              <div class="menu-img">
+                <img src="/PHOTOS/Spicy burger.webp" alt="Spicy burger" />
+              </div>
+              <div class="menu-body">
+                <h3 class="menu-title">Spicy Volcano</h3>
+                <p class="menu-desc">
+                  برجر حار مع هالبينو، صوص سبايسي، جبنة، وبصل مقرمش، لعشّاق الحراق.
+                </p>
+                <div class="menu-footer">
+                  <div class="price">
+                    <strong>135 ج.م</strong>
+                    <small>إمكانية تقليل درجة الحار</small>
+                  </div>
+                  <a href="product.html" class="btn btn-primary btn-sm">
+                    اطلب هذا البرجر
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <article class="menu-card" data-category="burgers">
+              <span class="menu-tag">دبل جبنة 🧀</span>
+              <div class="menu-img">
+                <img src="/PHOTOS/Cheese burger.avif" alt="Cheese burger" />
+              </div>
+              <div class="menu-body">
+                <h3 class="menu-title">Cheese Lovers</h3>
+                <p class="menu-desc">
+                  برجر مزدوج مع تشيدر و موزاريلا و صوص جبنة، لعشّاق الطعم الكريمي.
+                </p>
+                <div class="menu-footer">
+                  <div class="price">
+                    <strong>145 ج.م</strong>
+                    <small>إضافة بيكون بفرق بسيط</small>
+                  </div>
+                  <a href="product.html" class="btn btn-primary btn-sm">
+                    اطلب هذا البرجر
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <article class="menu-card" data-category="fries">
+              <span class="menu-tag">سناكس</span>
+              <div class="menu-img">
+                <img src="/PHOTOS/Truffle Fries.avif" alt="Truffle fries" />
+              </div>
+              <div class="menu-body">
+                <h3 class="menu-title">Truffle Fries</h3>
+                <p class="menu-desc">
+                  بطاطس مقلية بصوص الترافل والبارميزان، مقرمشة من الخارج وهشة من الداخل.
+                </p>
+                <div class="menu-footer">
+                  <div class="price">
+                    <strong>80 ج.م</strong>
+                    <small>يكفي شخصين</small>
+                  </div>
+                  <a href="product.html" class="btn btn-primary btn-sm">
+                    اطلب هذا السناكس
+                  </a>
+                </div>
+              </div>
+            </article>
+
+              <article class="menu-card" data-category="fries">
+              <span class="menu-tag">سناكس</span>
+              <div class="menu-img">
+                <img src="/PHOTOS/Legend Loaded Fries.avif" alt="Loaded fries" />
+              </div>
+              <div class="menu-body">
+                <h3 class="menu-title">Legend Loaded Fries</h3>
+                <p class="menu-desc">
+                  بطاطس بصوص الجبنة وقطع برجر مفرومة وصوص باربكيو، وجبة كاملة لوحدها.
+                </p>
+                <div class="menu-footer">
+                  <div class="price">
+                    <strong>95 ج.م</strong>
+                    <small>مناسبة للمشاركة</small>
+                  </div>
+                  <a href="product.html" class="btn btn-primary btn-sm">
+                    اطلب هذا السناكس
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <article class="menu-card" data-category="drinks">
+              <span class="menu-tag">مشروب</span>
+              <div class="menu-img">
+                <img src="/PHOTOS/Legend Cola.avif" alt="Cola drink" />
+              </div>
+              <div class="menu-body">
+                <h3 class="menu-title">Legend Cola</h3>
+                <p class="menu-desc">
+                  مشروب غازي مثلج يُقدَّم مع مكعبات ثلج و slice ليمون منعش.
+                </p>
+                <div class="menu-footer">
+                  <div class="price">
+                    <strong>35 ج.م</strong>
+                    <small>يمكن اختيار دايت</small>
+                  </div>
+                  <a href="product.html" class="btn btn-primary btn-sm">
+                    اطلب هذا المشروب
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <article class="menu-card" data-category="drinks">
+              <span class="menu-tag">مشروب</span>
+              <div class="menu-img">
+                <img src="/PHOTOS/Salted Caramel Shake.avif" alt="Milkshake" />
+              </div>
+              <div class="menu-body">
+                <h3 class="menu-title">Salted Caramel Shake</h3>
+                <p class="menu-desc">
+                  ميلك شيك فانيليا مع صوص كراميل مملّح، كريمة مخفوقة، ولمسة من القهوة.
+                </p>
+                <div class="menu-footer">
+                  <div class="price">
+                    <strong>70 ج.م</strong>
+                    <small>مثالي بعد الوجبة</small>
+                  </div>
+                  <a href="product.html" class="btn btn-primary btn-sm">
+                    اطلب هذا المشروب
+                  </a>
+                </div>
+              </div>
+            </article>
+
+              <article class="menu-card" data-category="deals">
+              <span class="menu-tag">كومبو 🎁</span>
+              <div class="menu-img">
+                <img src="/PHOTOS/كومبر.webp" alt="Burger combo" />
+              </div>
+              <div class="menu-body">
+                <h3 class="menu-title">Legend Duo Combo</h3>
+                <p class="menu-desc">
+                  2 برجر كلاسيك + فرايز كبيرة + 2 مشروب، مثالية لصاحبك اللي مش بيشبع.
+                </p>
+                <div class="menu-footer">
+                  <div class="price">
+                    <strong>260 ج.م</strong>
+                    <small>توفير يصل إلى 40 ج.م</small>
+                  </div>
+                  <a href="product.html" class="btn btn-primary btn-sm">
+                    اطلب هذا العرض
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <article class="menu-card" data-category="deals">
+              <span class="menu-tag">عائلة 👨‍👩‍👧‍👦</span>
+              <div class="menu-img">
+                <img src="/PHOTOS/عائلة.jpg" alt="Family burger box" />
+              </div>
+              <div class="menu-body">
+                <h3 class="menu-title">Family Feast Box</h3>
+                <p class="menu-desc">
+                  4 برجر اختيارك + 2 فرايز كبيرة + 4 مشروبات، كرتونة العيلة الأسطورية.
+                </p>
+                <div class="menu-footer">
+                  <div class="price">
+                    <strong>520 ج.م</strong>
+                    <small>أفضل اختيار للجروبات</small>
+                  </div>
+                  <a href="product.html" class="btn btn-primary btn-sm">
+                    اطلب هذا العرض
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <article class="menu-card" data-category="burgers">
+              <span class="menu-tag">فيجيتيريان 🌱</span>
+              <div class="menu-img">
+                <img src="/PHOTOS/فيجيتيريان.webp" alt="Veggie burger" />
+              </div>
+              <div class="menu-body">
+                <h3 class="menu-title">Green Legend</h3>
+                <p class="menu-desc">
+                  برجر نباتي من الحمص والبنجر، مع أفوكادو وصوص يوجرت منعش.
+                </p>
+                <div class="menu-footer">
+                  <div class="price">
+                    <strong>120 ج.م</strong>
+                    <small>100٪ نباتي</small>
+                  </div>
+                  <a href="product.html" class="btn btn-primary btn-sm">
+                    اطلب هذا البرجر
+                  </a>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  
+
+</body>
+</html>

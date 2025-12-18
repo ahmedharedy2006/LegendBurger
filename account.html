@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Details</title>
+    <link rel="stylesheet" href="/CSS/project.css">
+    <link rel="stylesheet" href="/CSS/account.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root{--card-bg:#0f1720;--muted:#94a3b8;--accent:#ff7a18}
+        body{font-family:Roboto, system-ui, -apple-system, sans-serif;background:transparent;margin:0;padding:28px;display:flex;justify-content:center;color:var(--text)}
+        .account-page{width:100%;max-width:980px}
+        .account-card{background:linear-gradient(180deg,#0b1220 0%, #0f1720 100%);color:#e6eef8;border-radius:12px;padding:20px;box-shadow:0 8px 30px rgba(2,6,23,.45)}
+        .account-header{display:flex;align-items:center;gap:14px;margin-bottom:8px}
+        .avatar{width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,var(--accent),#ffb36b);display:flex;align-items:center;justify-content:center;font-weight:700;color:#082028}
+        .header-info h1{margin:0;font-size:20px}
+        .sub{margin:2px 0 0;font-size:13px;color:var(--muted)}
+        .account-grid{display:grid;grid-template-columns:1fr 280px;gap:18px;margin-top:12px}
+        .info .info-item{display:flex;justify-content:space-between;align-items:center;padding:10px 12px;border-radius:8px;background:rgba(255,255,255,0.02);margin-bottom:10px}
+        .label{color:var(--muted);font-size:13px}
+        .value{font-weight:600;color:#e6eef8}
+        .value-container{display:flex;gap:10px;align-items:center}
+        .edit-link{font-size:13px;color:var(--accent);text-decoration:none;padding:6px 8px;border-radius:6px;background:rgba(255,122,24,0.08)}
+        .summary .summary-card{background:rgba(255,255,255,0.03);padding:16px;border-radius:10px;text-align:center}
+        .summary h3{margin:0;color:var(--muted);font-size:13px}
+        .summary .big{font-size:28px;margin:8px 0;color:#ffd7b5;font-weight:700}
+        .btn{display:inline-block;padding:8px 12px;border-radius:8px;background:var(--accent);color:#071015;text-decoration:none;font-weight:700}
+        .logout-btn{width:100%;margin-top:14px;padding:10px;border-radius:8px;border:0;background:#e84949;color:white;font-weight:700}
+        @media (max-width:820px){.account-grid{grid-template-columns:1fr}.avatar{width:56px;height:56px}.account-card{padding:16px}}
+    </style>
+</head>
+<body>
+    <div class="account-page">
+        <div class="account-card">
+            <div class="account-header">
+                <div class="avatar">R</div>
+                <div class="header-info">
+                    <h1>Account Details</h1>
+                    <div class="sub">Member since 2024 • Last login: today</div>
+                </div>
+                <div style="margin-left:auto">
+                    <a href="register.html" class="btn">Edit Profile</a>
+                </div>
+            </div>
+
+            <div class="account-grid">
+                <div class="info">
+                    <div class="info-item">
+                        <span class="label">Name</span>
+                        <div class="value-container">
+                            <span class="value">Rou</span>
+                            <a href="#" class="edit-link">Edit</a>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <span class="label">Phone</span>
+                        <span class="value">00000000000</span>
+                    </div>
+
+                    <div class="info-item">
+                        <span class="label">Email</span>
+                        <span class="value">—</span>
+                    </div>
+
+                    <div class="info-item">
+                        <span class="label">Address</span>
+                        <span class="value">—</span>
+                    </div>
+                </div>
+
+                <div class="summary">
+                    <div class="summary-card">
+                        <h3>Orders</h3>
+                        <div class="big">8</div>
+                        <a href="order.html" class="btn">View Orders</a>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top:14px;display:flex;gap:8px">
+                <button class="logout-btn">Log Out</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

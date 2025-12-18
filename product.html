@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <title>تفاصيل المنتج - Legend Burger</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- نفس ملف الستايل الأساسي -->
+    <link rel="stylesheet" href="/CSS/project.css" />
+  </head>
+  <body>
+   
+  <!-- Header -->
+  <header>
+    <div class="container nav">
+      <div class="logo">
+        <div class="logo-mark">
+          <span>B</span>
+        </div>
+        <div class="logo-text">
+          <strong>Legend Burger</strong>
+        </div>
+      </div>
+
+      <!-- Checkbox مسؤول عن فتح/غلق المنيو في الموبايل -->
+      <input type="checkbox" id="navToggle" hidden />
+
+<nav class="nav-links">
+  <a href="index.html">الصفحة الرئيسية</a>
+  <a href="index.html#about">عن المطعم</a>
+  <a href="menu.html">المنيو</a>
+  <a href="order.html">الطلبات</a>
+  <a href="account.html">تفاصيل الحساب</a>
+  <a href="contact.html">تواصل معنا</a>
+  
+  
+
+</nav>
+
+
+      <div class="nav-actions">
+        <a href="login.html" class="btn btn-primary">
+          تسجيل الدخول
+        </a>
+        <a href="register.html" class="btn btn-outline">
+          إنشاء حساب
+        </a>
+        <!-- زر الهامبورجر للموبايل -->
+        <label class="nav-toggle" for="navToggle" aria-label="Toggle navigation">
+          <span></span>
+        </label>
+      </div>
+    </div>
+  </header>
+
+
+    <main class="product-page">
+      <section class="product-hero">
+        <div class="container">
+          <!-- مسار التنقل -->
+          <div class="breadcrumb">
+            <a href="index.html">الرئيسية</a>
+            <span>/</span>
+            <a href="menu.html">المنيو</a>
+            <span>/</span>
+            <span>Legend Double Smash</span>
+          </div>
+
+          <div class="product-layout">
+            <!-- الصور -->
+            <article class="product-panel product-gallery">
+              <span class="product-tag">الأكثر مبيعاً ⭐</span>
+
+              <div class="product-main-img">
+                <img src="/PHOTOS/Spicy burger.webp" alt="Legend Double Smash" />
+              </div>
+
+              <div class="product-thumbs">
+                <button class="thumb active">
+                  <img src="/PHOTOS/Spicy burger.webp" alt="زاوية ١" />
+                </button>
+                <button class="thumb">
+                  <img src="/PHOTOS/Classic burger.avif" alt="زاوية ٢" />
+                </button>
+                <button class="thumb">
+                  <img src="/PHOTOS/Cheese burger.avif" alt="زاوية ٣" />
+                </button>
+              </div>
+            </article>
+
+            <!-- تفاصيل المنتج -->
+            <article class="product-panel product-info">
+              <div class="product-badge-row">
+                <span class="badge badge-soft">
+                  لحم طازج 100%
+                </span>
+                <span class="badge badge-soft">
+                  جاهز في أقل من 10 دقائق
+                </span>
+              </div>
+
+              <h1 class="product-title">Legend Double Smash</h1>
+              <p class="product-subtitle">
+                دبل بيف باتي مشوي على الفحم، جبنة تشيدر سايحة، بصل مكرمل،
+                بيكلز وصوص Legend السري في عيش بريوش طري.
+              </p>
+
+              <div class="product-meta">
+                <div class="product-rating">
+                  <span>⭐ 4.9</span>
+                  <span class="product-meta-text"> (+320 تقييم) </span>
+                </div>
+                <div class="product-time">
+                  ⏱ <span class="product-meta-text">10–15 دقيقة تجهيز</span>
+                </div>
+              </div>
+
+              <div class="product-section">
+                <div class="product-section-label">الحجم</div>
+                <div class="pill-group">
+                  <button class="pill-pill active">عادي</button>
+                  <button class="pill-pill">وسط</button>
+                  <button class="pill-pill">جامبو</button>
+                </div>
+              </div>
+
+              <div class="product-section">
+                <div class="product-section-label">الإضافات</div>
+                <div class="pill-group pill-group-wrap">
+                  <button class="pill-pill">+ جبنة زيادة</button>
+                  <button class="pill-pill">+ صوص Legend</button>
+                  <button class="pill-pill">+ بيكون بيف</button>
+                  <button class="pill-pill">+ جلالبينو حار</button>
+                </div>
+              </div>
+
+              <div class="product-price-row">
+                <div>
+                  <div class="product-price-label">السعر</div>
+                  <div class="product-price-main">155 جنيه</div>
+                  <div class="product-price-note">+ خدمة التوصيل حسب المنطقة</div>
+                </div>
+
+                <div class="product-actions">
+                  <a href="web.html" class="btn-primary">
+                    أضف للسلة
+                  </a>
+                  <button class="btn-ghost">
+                    أضف للمفضلة ♡
+                  </button>
+                </div>
+              </div>
+
+              <div class="product-details-grid">
+                <div class="product-detail-item">
+                  <div class="detail-label">نوع الخبز</div>
+                  <div class="detail-value">بريوش محمص</div>
+                </div>
+                <div class="product-detail-item">
+                  <div class="detail-label">درجة التسوية</div>
+                  <div class="detail-value">Medium Well (يمكن التعديل في الملاحظات)</div>
+                </div>
+                <div class="product-detail-item">
+                  <div class="detail-label">الحَرّاقة</div>
+                  <div class="detail-value">🔥 متوسطة</div>
+                </div>
+                <div class="product-detail-item">
+                  <div class="detail-label">مناسب لـ</div>
+                  <div class="detail-value">عشّاق اللحمة والجبنة 😋</div>
+                </div>
+              </div>
+
+              <div class="product-section product-notes">
+                <div class="product-section-label">ملاحظات للطلب</div>
+                <textarea
+                  class="product-notes-input"
+                  rows="3"
+                  placeholder="مثال: من غير بصل، زيادة صوص، عايزه يكون Well Done..."
+                ></textarea>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- قسم معلومات إضافية بسيطة -->
+      <section class="product-extra">
+        <div class="container">
+          <div class="product-extra-grid">
+            <div class="product-extra-card">
+              <h2>معلومات غذائية تقريبية</h2>
+              <ul>
+                <li>السعرات: 780 كالوري</li>
+                <li>بروتين: 42 جم</li>
+                <li>دهون: 46 جم</li>
+                <li>كاربوهيدرات: 48 جم</li>
+              </ul>
+              <p class="product-extra-note">
+                الأرقام تقريبية وقد تختلف حسب الإضافات والاختيارات.
+              </p>
+            </div>
+
+            <div class="product-extra-card">
+              <h2>مميزات Legend Double Smash</h2>
+              <ul>
+                <li>لحم طازج مش متجمّد</li>
+                <li>صوص سرّي بوصفة خاصة</li>
+                <li>خبز بريوش مخبوز يوم بيومه</li>
+                <li>إمكانية تخصيص كل مكوّن على مزاجك</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+   <footer>
+    <div class="container footer-row">
+      <div>© 2025 Legend Burger. جميع الحقوق محفوظة.</div>
+      <div>الموقع: القاهره .</div>
+    </div>
+  </footer>
+  </body>
+</html>
