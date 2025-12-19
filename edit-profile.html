@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile</title>
+
+    <link rel="stylesheet" href="/CSS/project.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --accent: #ff7a18;
+            --muted: #94a3b8;
+        }
+
+        body {
+            margin: 0;
+            font-family: Roboto, system-ui, sans-serif;
+            color: #f0f0f0;
+        }
+
+        body.contact-bg {
+            background-image:
+                linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.55)),
+                url('/PHOTOS/photo 1.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+
+        header, main, footer {
+            width: 100%;
+        }
+
+        /* ===== PAGE ===== */
+        .edit-page {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .edit-card {
+            background: linear-gradient(
+                180deg,
+                rgba(11,18,32,.9),
+                rgba(15,23,32,.85)
+            );
+            border-radius: 14px;
+            padding: 22px;
+            box-shadow: 0 8px 30px rgba(2,6,23,.45);
+        }
+
+        .edit-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 20px;
+        }
+
+        .avatar {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), #ffb36b);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: #082028;
+            font-size: 22px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 22px;
+        }
+
+        .sub {
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        /* ===== FORM ===== */
+        .form-group {
+            margin-bottom: 14px;
+        }
+
+        label {
+            display: block;
+            font-size: 13px;
+            color: var(--muted);
+            margin-bottom: 6px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px 12px;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,.15);
+            background: rgba(255,255,255,.05);
+            color: #fff;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: var(--accent);
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 10px 14px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-weight: 700;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: #071015;
+            flex: 1;
+        }
+
+        .btn-secondary {
+            background: rgba(255,255,255,.1);
+            color: #fff;
+            flex: 1;
+        }
+
+        @media (max-width: 600px) {
+            .edit-page {
+                margin: 20px auto;
+            }
+        }
+    </style>
+</head>
+
+<body class="contact-bg">
+
+    <!-- ===== NAVBAR ===== -->
+    <header>
+        <div class="container nav">
+            <div class="logo">
+                <div class="logo-mark"><span>B</span></div>
+                <div class="logo-text"><strong>Legend Burger</strong></div>
+            </div>
+
+            <nav class="nav-links">
+                <a href="index.html">الصفحة الرئيسية</a>
+                <a href="menu.html">المنيو</a>
+                <a href="order.html">الطلبات</a>
+                <a href="account.html">تفاصيل الحساب</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ===== EDIT PROFILE ===== -->
+    <main>
+        <div class="edit-page">
+            <div class="edit-card">
+
+                <div class="edit-header">
+                    <div class="avatar">R</div>
+                    <div>
+                        <h1>Edit Profile</h1>
+                        <div class="sub">Update your account information</div>
+                    </div>
+                </div>
+
+                <form>
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" value="Rou">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="text" value="00000000000">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" placeholder="example@email.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Address</label>
+                        <input type="text" placeholder="Your address">
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">
+                            Save Changes
+                        </button>
+                        <a href="account.html" class="btn btn-secondary">
+                            Cancel
+                        </a>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="container footer-row">
+            <div>© 2025 Legend Burger. جميع الحقوق محفوظة.</div>
+            <div>الموقع: القاهره .</div>
+        </div>
+    </footer>
+
+</body>
+</html>
